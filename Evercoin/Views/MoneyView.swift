@@ -7,24 +7,6 @@
 
 import SwiftUI
 
-//struct MoneyView: View {
-//    var body: some View {
-//        PickerView().pickerStyle(.segmented)
-//
-//        //        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-//    }
-//}
-//
-//
-#Preview("MoneyView") {
-    MoneyView()
-}
-
-//#Preview("PickerView") {
-//    PickerView()
-//}
-
-
 struct MoneyView: View {
     @State private var moneyFlow: MoneyFlow = .expense
     var body: some View {
@@ -53,3 +35,6 @@ struct MoneyView: View {
     }
 }
 
+#Preview("MoneyView") {
+    MoneyView()
+}
