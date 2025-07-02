@@ -22,7 +22,8 @@ struct SplashScreen: View {
                     .ignoresSafeArea(.all)
             }
         }
-        .foregroundStyle(.white)
+        .foregroundStyle(.clear)
+        .backgroundStyle(.white)
 
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
