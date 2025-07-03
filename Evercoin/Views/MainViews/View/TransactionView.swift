@@ -13,35 +13,34 @@ struct TransactionView: View {
 
     var body: some View {
 
-        HStack {
-            Text("Последние операции")
-                .font(.system(size: 17, weight: .medium))
-                .foregroundStyle(.ypBlack)
-            Spacer()
-//            Text("Все")
-//                .font(.system(size: 15, weight: .medium))
-//                .foregroundStyle(.gray)
-            Button(action: {
-                showingHistory = true
-            }) {
-                Text("Все")
-                    .font(.system(size: 15, weight: .medium))
-                    .foregroundStyle(.gray)
-            }
-            .sheet(isPresented: $showingHistory) {
-                HistoryView(viewModel: viewModel)
-                    .presentationDetents([.medium, .large])
-            }
-        }
-        .padding([.horizontal, .bottom], 16)
-        ScrollView(showsIndicators: false) {
-            LazyVStack {
-                ForEach(viewModel.todayList) { item in
-                    TransactionViewCell(item: item)
+        VStack {
+            HStack {
+                Text("Последние операции")
+                    .font(.system(size: 17, weight: .medium))
+                    .foregroundStyle(.ypBlack)
+                Spacer()
+                Button(action: {
+                    showingHistory = true
+                }) {
+                    Text("Все")
+                        .font(.system(size: 15, weight: .medium))
+                        .foregroundStyle(.gray)
+                }
+                .sheet(isPresented: $showingHistory) {
+                    HistoryView(viewModel: viewModel)
+                        .presentationDetents([.medium, .large])
                 }
             }
+            .padding([.horizontal, .bottom], 16)
+            ScrollView(showsIndicators: false) {
+                LazyVStack {
+                    ForEach(viewModel.todayList) { item in
+                        TransactionViewCell(item: item)
+                    }
+                }
+            }
+            .padding(.horizontal, 16)
         }
-        .padding(.horizontal, 16)
     }
 }
 

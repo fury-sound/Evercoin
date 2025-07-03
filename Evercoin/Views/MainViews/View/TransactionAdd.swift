@@ -9,22 +9,25 @@ import SwiftUI
 
 struct TransactionAdd: View {
     @ObservedObject var viewModel: TransactionViewModel
+    @ObservedObject var accountViewModel: AccountViewModel
     @State private var inputSum: String = ""
     @State private var inputName: String = ""
     @State private var inputDate: String = ""
     @State private var inputComment: String = ""
+    @State private var showVoiceInput = false
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
-                Image(systemName: "chevron.left")
-                Spacer()
-                Text("Добавить операцию")
-                    .font(.system(size: 17, weight: .medium))
-                    .foregroundStyle(.ypBlack)
-                Spacer()
-                Image(systemName: "microphone")
-            }
+//            HStack {
+//                Image(systemName: "chevron.left")
+//                Spacer()
+//                Text("Добавить операцию")
+//                    .font(.system(size: 17, weight: .medium))
+//                    .foregroundStyle(.ypBlack)
+//                Spacer()
+//                Image(systemName: "microphone")
+//            }
             TransactionPicker()
             ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading) {
@@ -34,7 +37,7 @@ struct TransactionAdd: View {
                         .font(.system(size: 14, weight: .medium))
                         .foregroundStyle(.ypBlack)
                         .padding(.top, 12)
-                    AccountCollectionView()
+                    AccountCollectionView(viewModel: accountViewModel)
                     Text("Категория")
                         .font(.system(size: 14, weight: .medium))
                         .foregroundStyle(.ypBlack)
@@ -74,13 +77,43 @@ struct TransactionAdd: View {
 
         }
         .padding(.horizontal, 16)
+        .navigationBarBackButtonHidden(true)
+        .buttonStyle(PlainButtonStyle())
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .foregroundStyle(Color(.ypBlack))
+                }
+            }
+            ToolbarItem(placement: .principal) {
+                Text("Добавить операцию")
+                    .font(.system(size: 17, weight: .bold))
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    showVoiceInput = true
+                } label: {
+                    Image(systemName: "microphone")
+                        .foregroundStyle(Color(.ypBlack))
+                }
+            }
+        }
+        .sheet(isPresented: $showVoiceInput) {
+            VoiceEntryView()
+                .presentationDetents([.medium])
+        }
         Spacer()
     }
 }
 
 #Preview {
     var viewModel = TransactionViewModel()
-    TransactionAdd(viewModel: viewModel)
+    var accountViewModel = AccountViewModel()
+    TransactionAdd(viewModel: viewModel, accountViewModel: accountViewModel)
 }
 
 struct CommonTextField: View {

@@ -1,5 +1,5 @@
 //
-//  AccountViewCell.swift
+//  AccountCollectionViewCell.swift
 //  Evercoin
 //
 //  Created by Valery Zvonarev on 01.07.2025.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AccountViewCell: View {
+struct AccountCollectionViewCell: View {
 
     let accountInfo: FinancesModel
 
@@ -38,6 +38,6 @@ struct AccountViewCell: View {
 }
 
 #Preview {
-    var accountInfo: FinancesModel = .init(assets: "425 000 р", title: "Все счета", imageRes: .total)
-    AccountViewCell(accountInfo: accountInfo)
+    var accountInfo: FinancesModel = .init(id: 100, assets: "425 000 р", title: "Все счета", imageRes: .total, colorStart: .darkBlue, colorEnd: .navyBlue)
+    AccountCollectionViewCell(accountInfo: accountInfo)
 }

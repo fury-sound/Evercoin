@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct AccountCollectionView: View {
-@StateObject var viewModel = AccountViewModel()
+    @ObservedObject var viewModel: AccountViewModel
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack {
                 ForEach(viewModel.accountArray.indices, id: \.self) { index in
-                    AccountViewCell(accountInfo: viewModel.accountArray[index])
+                    AccountCollectionViewCell(accountInfo: viewModel.accountArray[index])
                     //                    .onTapGesture {
                     //                        handleTap(on: index)
                     //                        withAnimation(.easeInOut(duration: 2)) {
@@ -33,5 +33,6 @@ struct AccountCollectionView: View {
 }
 
 #Preview {
-    AccountCollectionView()
+    var accountViewModel = AccountViewModel()
+    AccountCollectionView(viewModel: accountViewModel)
 }

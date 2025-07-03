@@ -20,10 +20,13 @@ enum TransactionType: String, CaseIterable, Identifiable {
     case transfer = "Перевод"
 }
 
-struct FinancesModel: Hashable  {
+struct FinancesModel: Hashable, Identifiable {
+    var id: Int
     var assets: String
     var title: String
     var imageRes: ImageResource
+    var colorStart: Color
+    var colorEnd: Color
 }
 
 struct FlowModel: Hashable, Identifiable  {
