@@ -11,18 +11,22 @@ struct Accounts: View {
     @ObservedObject var viewModel: AccountViewModel
 
     var body: some View {
+        NavigationStack {
         Text("Мои счета")
             .padding(.bottom, 20)
             .font(.system(size: 20, weight: .bold))
             .foregroundStyle(.ypBlack)
-        ScrollView(showsIndicators: false) {
-            LazyVStack {
-                ForEach(viewModel.accountArray, id: \.self) { account in
-                    AccountListViewCell(accountInfo: account)
+            ScrollView(showsIndicators: false) {
+                AccountListViewCellAdd(viewModel: viewModel)
+                    .padding(.top, 16)
+                    .padding(.bottom, 8)
+                LazyVStack {
+                    ForEach(viewModel.accountArray, id: \.self) { account in
+                        AccountListViewCell(accountInfo: account)
+                    }
                 }
             }
         }
-
     }
 }
 

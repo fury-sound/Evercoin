@@ -13,5 +13,20 @@ let accountCash = FinancesModel(id: 30, assets: "100 000 р", title: "Налич
 let accountYPay = FinancesModel(id: 40, assets: "300 000 р", title: "Яндекс Пэй", imageRes: .yandexPay, colorStart: .deepPurple, colorEnd: .vibrantPurple)
 
 final class AccountViewModel: ObservableObject {
+    let gradientPairs: [(Color, Color)] = [
+        (Color.ypBlack, Color.ypDarkGray),
+        (Color.violet, Color.pink),
+        (Color.blue, Color.lightBlue2),
+        (Color.darkBlue, Color.navyBlue),
+        (Color.teal, Color.aqua),
+        (Color.lime, Color.green),
+        (Color.yellowGreen, Color.yellow),
+        (Color.deepPurple, Color.purple),
+        (Color.pinkRed, Color.coral),
+        (Color.red, Color.orange),
+        (Color.mediumPink, Color.hotPink),
+        (Color.darkOrange, Color.lightOrange)
+    ]
+    let financeIcons: [ImageResource] = [.cash, .vtb, .total, .gazprombank, .tBank, .sovcombank, .alphabank, .uralsib, .sber, .raiffaisen, .yandexPayRound, .rshb]
     let accountArray = [accountTotal, accountTBank, accountCash, accountYPay]
 }

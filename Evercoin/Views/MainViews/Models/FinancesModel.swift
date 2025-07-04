@@ -20,6 +20,13 @@ enum TransactionType: String, CaseIterable, Identifiable {
     case transfer = "Перевод"
 }
 
+struct colorGradientModel: Hashable, Identifiable {
+    var id: String
+//    var name: String
+    var startColor: Color
+    var endColor: Color
+}
+
 struct FinancesModel: Hashable, Identifiable {
     var id: Int
     var assets: String
