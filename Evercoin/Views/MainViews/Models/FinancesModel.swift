@@ -13,6 +13,12 @@ enum MoneyFlow: String, CaseIterable, Identifiable {
     case income = "Доходы"
 }
 
+enum AnalyticsItems: String, CaseIterable, Identifiable {
+    var id: Self { self }
+    case flowData = "Доходы и расходы"
+    case categories = "Категории"
+}
+
 enum TransactionType: String, CaseIterable, Identifiable {
     var id: Self { self }
     case expense = "Расходы"

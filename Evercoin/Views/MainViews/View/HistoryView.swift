@@ -27,13 +27,38 @@ struct HistoryView: View {
         }
         //        .background(.red)
 //        .padding([.horizontal, .bottom], 16)
+        HistoryListView(viewModel: viewModel)
+    }
+}
+
+
+#Preview {
+    var viewModel = TransactionViewModel()
+    HistoryView(viewModel: viewModel)
+}
+
+struct HistoryListView: View {
+    @ObservedObject var viewModel: TransactionViewModel
+
+    var body: some View {
+        HStack {
+            DropdownMenu(elementArray: periodArray, selectedElement: "7 дней")
+                .frame(width: 105)
+            DropdownMenu(elementArray: allAccounts, selectedElement: "Все счета")
+                .frame(width: 130)
+            DropdownMenu(elementArray: flowArrayAll, selectedElement: "Операции")
+                .frame(width: 110)
+            Spacer()
+        }
+        .padding(.horizontal, 16)
+        .padding(.top, 12)
         ScrollView(showsIndicators: false) {
             HStack {
                 Text("Сегодня")
                     .font(.system(size: 15, weight: .medium))
                     .foregroundStyle(.ypBlack)
                 Spacer()
-//                Text("-10 531 ₽")
+                //                Text("-10 531 ₽")
                 let curResult = Int(viewModel.totalForDay(inArray: viewModel.todayList))
                 Text("\(curResult) ₽")
                     .font(.system(size: 13, weight: .regular))
@@ -53,7 +78,7 @@ struct HistoryView: View {
                 Spacer()
                 let curResult = Int(viewModel.totalForDay(inArray: viewModel.yesterdayList))
                 Text("\(curResult) ₽")
-//                Text("-3 000 ₽")
+                //                Text("-3 000 ₽")
                     .font(.system(size: 13, weight: .regular))
                     .foregroundStyle(.gray)
             }
@@ -71,7 +96,7 @@ struct HistoryView: View {
                 Spacer()
                 let curResult = Int(viewModel.totalForDay(inArray: viewModel.june27List))
                 Text("\(curResult) ₽")
-//                Text("-3 000 ₽")
+                //                Text("-3 000 ₽")
                     .font(.system(size: 13, weight: .regular))
                     .foregroundStyle(.gray)
             }
@@ -89,7 +114,7 @@ struct HistoryView: View {
                 Spacer()
                 let curResult = Int(viewModel.totalForDay(inArray: viewModel.june26List))
                 Text("\(curResult) ₽")
-//                Text("-3 000 ₽")
+                //                Text("-3 000 ₽")
                     .font(.system(size: 13, weight: .regular))
                     .foregroundStyle(.gray)
             }
@@ -105,8 +130,3 @@ struct HistoryView: View {
     }
 }
 
-
-#Preview {
-    var viewModel = TransactionViewModel()
-    HistoryView(viewModel: viewModel)
-}

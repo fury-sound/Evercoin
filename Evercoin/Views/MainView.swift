@@ -8,14 +8,20 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var viewModel = TransactionViewModel()
-    @StateObject var accountViewModel = AccountViewModel()
+//    @StateObject var viewModel = TransactionViewModel()
+//    @StateObject var accountViewModel = AccountViewModel()
+    @ObservedObject var viewModel: TransactionViewModel
+    @ObservedObject var accountViewModel: AccountViewModel
 
     var body: some View {
 
         NavigationStack {
             VStack {
+                UpperHeaderView()
+//                    .padding(.bottom, 8)
                 AccountCollectionView(viewModel: accountViewModel)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
                 MoneyView()
 
                 ZStack (alignment: .bottom){
@@ -34,10 +40,36 @@ struct MainView: View {
                 }
             }
         }
-        .edgesIgnoringSafeArea(.bottom)
+//        .edgesIgnoringSafeArea(.bottom)
     }
 }
 
+
 #Preview {
-    MainView()
+    var viewModel = TransactionViewModel()
+    var accountViewModel = AccountViewModel()
+    MainView(viewModel: viewModel, accountViewModel: accountViewModel)
+}
+
+#Preview {
+    UpperHeaderView()
+}
+
+struct UpperHeaderView: View {
+    var body: some View {
+        HStack (alignment: .center, spacing: 16){
+            Image(.logoMedium)
+            Image(.title)
+            Spacer()
+            Image(systemName: "bell")
+                .font(.system(size: 20, weight: .regular))
+                .foregroundColor(.ypBlack)
+        }
+        .padding(.horizontal, 16)
+//        .padding(.bottom, 16)
+//        .background(Color.blue)
+
+
+
+    }
 }

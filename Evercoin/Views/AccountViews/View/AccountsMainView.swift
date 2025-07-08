@@ -1,5 +1,5 @@
 //
-//  Accounts.swift
+//  AccountsMainView.swift
 //  Evercoin
 //
 //  Created by Valery Zvonarev on 04.07.2025.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Accounts: View {
+struct AccountsMainView: View {
     @ObservedObject var viewModel: AccountViewModel
 
     var body: some View {
@@ -32,5 +32,5 @@ struct Accounts: View {
 
 #Preview {
     var accountViewModel = AccountViewModel()
-    Accounts(viewModel: accountViewModel)
+    AccountsMainView(viewModel: accountViewModel)
 }

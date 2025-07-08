@@ -87,6 +87,10 @@ let transaction13 = TransactionModel(title:  "Лента", category: "Проду
 let transaction14 = TransactionModel(title:  "Лампочки", category: "Дом и ремонт", sum: "-239 ₽", imageRes: .home, flowType: false)
 
 final class TransactionViewModel: ObservableObject {
+    var allTransactions: [TransactionModel] = [transaction1, transaction2, transaction3, transaction4, transaction5, transaction6, transaction7, transaction8, transaction9, transaction10, transaction11, transaction12, transaction13, transaction14]
+    var allIncomeTransactions: [TransactionModel] = [transaction2, transaction12]
+    var allExpenseTransactions: [TransactionModel] = [transaction1, transaction3, transaction4, transaction5, transaction6, transaction7, transaction8, transaction9, transaction10, transaction11, transaction13, transaction14]
+
     var todayList: [TransactionModel] = [transaction1, transaction2, transaction3, transaction4, transaction5, transaction6, transaction7]
     var yesterdayList: [TransactionModel] = [transaction8, transaction9]
     var june27List: [TransactionModel] = [transaction10, transaction11, transaction12]
@@ -118,5 +122,18 @@ final class TransactionViewModel: ObservableObject {
             return result
         }
         return finalResult
+    }
+
+    func arrangeTransactions() {
+        let groupedTransactions = Dictionary(grouping: allExpenseTransactions) { $0.category }
+//        print("groupedTransactions", groupedTransactions)
+        let categorizedTransactions = Array(groupedTransactions.values)
+//        print("categorizedTransactions", categorizedTransactions)
+        for (index, transactions) in categorizedTransactions.enumerated() {
+            print("Category \(index + 1):")
+            for transaction in transactions {
+                print(" - \(transaction.title) (\(transaction.sum))")
+            }
+        }
     }
 }

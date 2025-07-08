@@ -18,15 +18,19 @@ struct SplashScreen: View {
             } else {
 //                Rectangle()
 //                    .background(Color.white)
-                Image(.logoBig)
-                    .ignoresSafeArea(.all)
+                VStack{
+                    GIFView("splashVideo")
+                        .frame(maxWidth: .infinity , maxHeight: .infinity , alignment: .center)
+                }
+//                Image(.logoBig)
+//                    .ignoresSafeArea(.all)
             }
         }
         .foregroundStyle(.clear)
         .backgroundStyle(.white)
 
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 withAnimation {
                     self.isActive = true
                 }

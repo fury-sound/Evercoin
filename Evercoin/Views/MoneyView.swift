@@ -32,6 +32,7 @@ struct MoneyView: View {
             .transition(.opacity) // Анимация перехода
         }
         .animation(.easeInOut, value: moneyFlow)
+//        .background(Color.gray)
     }
 }
 

@@ -32,6 +32,7 @@ struct AccountCollectionViewCell: View {
         .overlay(
             RoundedRectangle(cornerRadius: 8)
                 .stroke(.accentGreen, lineWidth: 1)
+//                .stroke(.red, lineWidth: 3)
         )
 //        .background(Color.red)
     }

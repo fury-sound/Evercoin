@@ -82,7 +82,8 @@ struct EnterView: View {
                 )
             }
             .navigationDestination(isPresented: $isShowingMainView) {
-                MainView()
+//                MainView()
+                MainTabView()
                     .navigationBarBackButtonHidden(true)
             }
             .padding(.horizontal, 16)

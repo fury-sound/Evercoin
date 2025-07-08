@@ -38,6 +38,7 @@ struct TransactionAdd: View {
                         .foregroundStyle(.ypBlack)
                         .padding(.top, 12)
                     AccountCollectionView(viewModel: accountViewModel)
+                        .padding(.bottom, 2)
                     Text("Категория")
                         .font(.system(size: 14, weight: .medium))
                         .foregroundStyle(.ypBlack)
@@ -80,6 +81,7 @@ struct TransactionAdd: View {
         .navigationBarBackButtonHidden(true)
         .buttonStyle(PlainButtonStyle())
         .navigationBarTitleDisplayMode(.inline)
+//        .toolbar(.hidden, for: .tabBar)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
@@ -92,6 +94,7 @@ struct TransactionAdd: View {
             ToolbarItem(placement: .principal) {
                 Text("Добавить операцию")
                     .font(.system(size: 17, weight: .bold))
+                    .foregroundStyle(Color(.ypBlack))
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
@@ -160,6 +163,7 @@ struct DateTextField: View {
                 }) {
                     Image(systemName: "calendar")
                         .padding(14)
+                        .foregroundStyle(.ypBlack)
                         .background(Color.gray.opacity(0.1))
                         .cornerRadius(8)
                 }

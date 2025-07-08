@@ -15,10 +15,10 @@ struct AccountAdd: View {
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
-        VStack(alignment: .leading) {
-//            CommonTextField(title: "Валюта", placeholder: "Название счета", text: $inputCurrency)
-            CurrencyPickerField(title: "Валюта", placeholder: "Валюта", selectedCurrency: $inputCurrency)
+        ScrollView(showsIndicators: false) {
 
+        VStack(alignment: .leading) {
+            CurrencyPickerField(title: "Валюта", placeholder: "Валюта", selectedCurrency: $inputCurrency)
             CommonTextField(title: "Название счета", placeholder: "Название счета", text: $inputName)
             CommonTextField(title: "Сумма", placeholder: "00,00 ₽", text: $inputBalance)
             Text("Иконка")
@@ -40,7 +40,7 @@ struct AccountAdd: View {
                     .labelsHidden()
             }
             .padding(.bottom, 16)
-              HStack {
+            HStack {
                 Text("Не показывать в общем балансе")
                     .font(.system(size: 17, weight: .regular))
                     .foregroundStyle(.ypBlack)
@@ -48,7 +48,6 @@ struct AccountAdd: View {
                 Toggle("Сделать платеж регулярным", isOn: .constant(false))
                     .labelsHidden()
             }
-            Spacer()
             Button {
                 print("Сохраняем данные по операции")
             } label: {
@@ -69,6 +68,7 @@ struct AccountAdd: View {
         .navigationBarBackButtonHidden(true)
         .buttonStyle(PlainButtonStyle())
         .navigationBarTitleDisplayMode(.inline)
+//        .toolbar(.hidden, for: .tabBar)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
@@ -81,8 +81,12 @@ struct AccountAdd: View {
             ToolbarItem(placement: .principal) {
                 Text("Создать счет")
                     .font(.system(size: 17, weight: .bold))
+                    .foregroundStyle(Color(.ypBlack))
             }
         }
+
+        }
+//        Spacer()
     }
 }
 

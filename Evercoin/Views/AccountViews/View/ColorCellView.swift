@@ -19,19 +19,14 @@ struct ColorCellView: View {
             )
             .frame(width: 50, height: 50)
             .clipShape(Circle())
-
-
-
-//        VStack(alignment: .center) {
-//            Image(icon)
-//                .clipShape(Circle())
-//        }
-//        .frame(width: 50, height: 50)
-//        .background(Color.gray.opacity(0.1))
-//        .clipShape(Circle())
         .overlay(
             Circle()
                 .stroke(isSelected ? Color.green : Color.clear, lineWidth: 2)
+        )
+        .overlay(
+            Circle()
+                .stroke(isSelected ? Color.ypWhite : Color.clear, lineWidth: 1)
+                .padding(1)
         )
     }
 }

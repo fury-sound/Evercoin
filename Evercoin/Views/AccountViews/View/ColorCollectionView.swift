@@ -29,7 +29,7 @@ struct ColorCollectionView: View {
                 }
             }
             .padding(.horizontal, 8)
-            .frame(height: 108)
+            .frame(height: 115)
         }
     }
 }

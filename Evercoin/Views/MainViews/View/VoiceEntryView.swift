@@ -18,6 +18,7 @@ struct VoiceEntryView: View {
                 }) {
                     Text("Закрыть")
                         .font(.system(size: 17, weight: .medium))
+                        .foregroundStyle(Color(.blue))
                 }
                 Spacer()
                 Button(action: {
@@ -26,9 +27,10 @@ struct VoiceEntryView: View {
                 }) {
                     Text("Сохранить")
                         .font(.system(size: 17, weight: .bold))
+                        .foregroundStyle(Color(.blue))
                 }
             }
-            .padding(.bottom, 60)
+            .padding(.bottom, 40)
             Text("Добавьте операцию с помощью голосового ввода")
                 .font(.system(size: 20, weight: .bold))
                 .foregroundColor(.ypBlack)
@@ -39,9 +41,14 @@ struct VoiceEntryView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 22)
                 .padding(.top, 12)
-                .padding(.bottom, 40)
-            Image(systemName: "microphone.fill")
-                .font(.system(size: 50))
+                .padding(.bottom, 20)
+//            Image(systemName: "microphone.fill")
+//                .font(.system(size: 50))
+//                .foregroundStyle(.ypBlack)
+            VStack{
+                    GIFView("micVideo")
+                        .frame(width: 182, height: 130, alignment: .center)
+            }
         }
         .padding(.top, 40)
         .padding(.horizontal, 23)
